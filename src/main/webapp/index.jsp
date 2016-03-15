@@ -23,7 +23,7 @@ pageEncoding="ISO-8859-1"%>
 				<label style="color: blue;">Ponneeswaran</label> <label style="color: brown;">Natarajan</label>
 			</h3>
 			<h5>
-				<a href="hello">Click here to proceed.</a>
+				<a href="homePage">Click here to proceed.</a>
 			</h5>
 		</center>
 	</div>
