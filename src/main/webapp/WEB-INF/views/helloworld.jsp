@@ -9,7 +9,7 @@
 	<script src="https://code.jquery.com/jquery-2.2.1.js" integrity="sha256-eNcUzO3jsv0XlJLveFEkbB8bA7/CroNpNVk3XpmnwHc=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/common.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/javascript/common.js"></script>
 	<script>
 		$( document ).ready(function() {
 			myApp.test();
