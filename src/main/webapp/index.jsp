@@ -5,15 +5,24 @@ pageEncoding="ISO-8859-1"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Spring 4 MVC - HelloWorld Index Page</title>
+<title>QoTD</title>
 </head>
 <body>
- 
-	<center>
-		<h2>Hello World</h2>
-		<h3>
-			<a href="hello">Click Here!</a>
-		</h3>
-	</center>
+ 	<div style="margin-top: 150px;">
+		<center>
+			<h1>Java <label style="color: brown;">a</label><label style="color: blue;">Quiz</label><label style="color: brown;">a</label><label style="color: blue;">Day</label>
+			</h1>
+			<h3>CSE591: Adaptive Web Final Project</h3>
+			<h3>
+				<label style="color: blue;">Ajith</label> <label style="color: brown;">Vimalchand</label> | 
+				<label style="color: blue;">Anandh</label> <label style="color: brown;">Ravikumar</label> | 
+				<label style="color: blue;">Manjula</label> <label style="color: brown;">Malaiarasan</label> | 
+				<label style="color: blue;">Ponneeswaran</label> <label style="color: brown;">Natarajan</label>
+			</h3>
+			<h5>
+				<a href="hello">Click here to proceed.</a>
+			</h5>
+		</center>
+	</div>
 </body>
 </html>
