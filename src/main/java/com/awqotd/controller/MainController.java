@@ -16,7 +16,6 @@ public class MainController {
 		System.out.println("in controller");
  
 		ModelAndView mv = new ModelAndView("homePage");
-		mv.addObject("clientId",ConstantVO.clientId);
 		return mv;
 	}
 }

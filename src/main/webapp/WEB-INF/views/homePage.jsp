@@ -3,12 +3,10 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<meta name="google-signin-client_id" content="${clientId}">
 	<title>Java - aQuizaDay</title>
 	
 	<link rel="icon" href="<%=request.getContextPath()%>/resources/images/java_logo7.png">
 	
-	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 	<script src="https://code.jquery.com/jquery-2.2.1.js" integrity="sha256-eNcUzO3jsv0XlJLveFEkbB8bA7/CroNpNVk3XpmnwHc=" crossorigin="anonymous"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/javascript/common.js"></script>
@@ -20,28 +18,6 @@
 		$( document ).ready(function() {
 			qotd.init();
 		});
-		function onSignIn(googleUser) {
-		  var profile = googleUser.getBasicProfile();
-		  console.log("hi!");
-		  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-		  console.log('Name: ' + profile.getName());
-		  console.log('Image URL: ' + profile.getImageUrl());
-		  console.log('Email: ' + profile.getEmail());
-		}
-	    function onFailure(error) {
-	      console.log(error);
-	    }
-	    function renderButton() {
-	      gapi.signin2.render('my-signin2', {
-	        'scope': 'profile email',
-	        'width': 240,
-	        'height': 50,
-	        'longtitle': true,
-	        'theme': 'dark',
-	        'onsuccess': onSignIn,
-	        'onfailure': onFailure
-	      });
-	    }
 	</script>
 </head>
 <body>
@@ -50,7 +26,6 @@
 		<div class="qotd-right" style="font-style: italic; margin-top: 17px;">The greatest enemy of knowledge is not ignorance, rather illusion of knowledge - <b>Stephen Hawking</b></div>
 	</div>
 	<button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>
-	<div id="my-signin2"></div>
 	
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
@@ -65,11 +40,11 @@
 		    		<form role="form" action="LoginServlet">
 						<div class="form-group">
 		        			<label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-		        			<input type="text" class="form-control" id="usrname" placeholder="Enter email">
+		        			<input type="text" class="form-control" id="usrname" placeholder="Enter username" name="user">
 		      			</div>
 			      		<div class="form-group">
 			        		<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-			        		<input type="text" class="form-control" id="psw" placeholder="Enter password">
+			        		<input type="text" class="form-control" id="psw" placeholder="Enter password" name="pwd">
 			      		</div>
 			      		<div class="checkbox">
 			        		<label><input type="checkbox" value="" checked>Remember me</label>
