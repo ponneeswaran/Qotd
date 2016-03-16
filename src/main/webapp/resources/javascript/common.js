@@ -1,6 +1,10 @@
 var qotd = {
 		init : function(){
 			console.log("Hi");
+			$("#myBtn").click(function(){
+				console.log("Hi");
+		        $("#myModal").modal();
+		    });
 		},
 		signOut : function(){
 			var auth2 = gapi.auth2.getAuthInstance();

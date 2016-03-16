@@ -6,6 +6,7 @@ pageEncoding="ISO-8859-1"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>QoTD</title>
+<link rel="icon" href="<%=request.getContextPath()%>/resources/images/java_logo7.png">
 <script src="https://code.jquery.com/jquery-2.2.1.js" integrity="sha256-eNcUzO3jsv0XlJLveFEkbB8bA7/CroNpNVk3XpmnwHc=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"></script>
@@ -23,7 +24,7 @@ pageEncoding="ISO-8859-1"%>
 				<label style="color: blue;">Ponneeswaran</label> <label style="color: brown;">Natarajan</label>
 			</h3>
 			<h5>
-				<a href="homePage">Click here to proceed.</a>
+				<a href="homePage" class="btn btn-info">Click here to proceed.</a>
 			</h5>
 		</center>
 	</div>
