@@ -1,8 +1,6 @@
 var qotd = {
 		init : function(){
-			console.log("Hi");
 			$("#myBtn").click(function(){
-				console.log("Hi");
 		        $("#myModal").modal();
 		    });
 		},

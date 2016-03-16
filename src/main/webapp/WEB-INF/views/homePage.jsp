@@ -8,7 +8,7 @@
 	
 	<link rel="icon" href="<%=request.getContextPath()%>/resources/images/java_logo7.png">
 	
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 	<script src="https://code.jquery.com/jquery-2.2.1.js" integrity="sha256-eNcUzO3jsv0XlJLveFEkbB8bA7/CroNpNVk3XpmnwHc=" crossorigin="anonymous"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/javascript/common.js"></script>
@@ -22,6 +22,7 @@
 		});
 		function onSignIn(googleUser) {
 		  var profile = googleUser.getBasicProfile();
+		  console.log("hi!");
 		  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
 		  console.log('Name: ' + profile.getName());
 		  console.log('Image URL: ' + profile.getImageUrl());
@@ -49,6 +50,8 @@
 		<div class="qotd-right" style="font-style: italic; margin-top: 17px;">The greatest enemy of knowledge is not ignorance, rather illusion of knowledge - <b>Stephen Hawking</b></div>
 	</div>
 	<button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>
+	<div id="my-signin2"></div>
+	
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
