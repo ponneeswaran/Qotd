@@ -62,7 +62,7 @@
 					<h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
 				</div>
 				<div class="modal-body" style="padding:40px 50px;">
-		    		<form role="form">
+		    		<form role="form" action="LoginServlet">
 						<div class="form-group">
 		        			<label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
 		        			<input type="text" class="form-control" id="usrname" placeholder="Enter email">
