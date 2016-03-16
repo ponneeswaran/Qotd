@@ -1,0 +1,38 @@
+@CHARSET "ISO-8859-1";
+.top{
+	height: 68px;
+    padding-top: 20px;
+    line-height: 50px;
+    overflow: hidden;
+    font-size: 15px;
+    background-color: #B4B4B4;
+}
+.qotd-container{
+	padding: 0.01em 16px;
+}
+.qotd-right{
+	float: right !important;
+}
+.qotd-logo{
+	font-family: fontawesome;
+    text-decoration: none !important;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 37px;
+    letter-spacing: 3px;
+    color: #555555;
+    display: block;
+    position: absolute;
+    top: 17px;
+    padding-left: 2px;
+}
+.modal-header, h4, .close {
+    background-color: #5cb85c;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+}
+.modal-footer {
+    background-color: #f9f9f9;
+}
