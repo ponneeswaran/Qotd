@@ -33,3 +33,8 @@ h4{
     text-align: center;
     font-size: 30px;
 }
+.errMsg{
+	font-size: 12px;
+	font-style: italic;
+	color: red;
+}
