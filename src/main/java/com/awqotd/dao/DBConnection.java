@@ -9,7 +9,7 @@ public class DBConnection
 	public static Connection getConnection()
 	{
 		Connection connection = null;
-		try 
+		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/qotd","adminWrhucm3","qvC2LFh6la5a");
