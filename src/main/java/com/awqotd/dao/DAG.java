@@ -35,7 +35,7 @@ public class DAG {
 		return instance;
 	}
 	
-	public List<com.awqotd.vo.Node> getNodes()
+	public List<Node> getNodes()
 	{
 		return _nodes;
 	}
