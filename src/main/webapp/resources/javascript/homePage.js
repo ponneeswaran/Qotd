@@ -74,10 +74,10 @@ var hPage = {
 			type: 'POST',
 			url: hPage.globalVar.context+'/userSignUp',
 			data: JSON.stringify(userData),
-			contentType: "application/json; charset=utf-8",
+			contentType: "application/json",
 			dataType: "json",
-			success: function(success){
-				console.log(success);
+			success: function(data){
+				console.log(data);
 			},
 			failure: function(failure){
 				
