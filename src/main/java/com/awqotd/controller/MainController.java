@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.awqotd.dao.DataAccessor;
 import com.awqotd.vo.ResponseVO;
 import com.awqotd.vo.UserDetailsVO;
 
 @Controller
 public class MainController {
+	
+	DataAccessor dAcc = new DataAccessor();
 	
 	@RequestMapping("/homePage")
 	public ModelAndView showMessage() {
@@ -25,9 +28,15 @@ public class MainController {
 	@ResponseBody
 	public ResponseVO userSignUp(@RequestBody UserDetailsVO userDetails){
 		ResponseVO responseVO = new ResponseVO();
-		System.out.println("EmailId: "+userDetails.getEmailId());
-		System.out.println("Password: "+userDetails.getPassword());
-		responseVO.setErrorMessage("Success");
+		try {
+			dAcc.userSignUp(userDetails);
+			responseVO.setErrorMessage("SignUp Success");
+			responseVO.setErrorStatus(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseVO.setErrorMessage("SignUp Failure");
+			responseVO.setErrorStatus(false);
+		}
 		return responseVO;		
 	}
 }
