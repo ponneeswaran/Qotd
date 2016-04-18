@@ -17,13 +17,26 @@ public class MainController {
 	DataAccessor dAcc = new DataAccessor();
 	
 	@RequestMapping("/homePage")
-	public ModelAndView showMessage() {
-		System.out.println("in controller");
- 
+	public ModelAndView getHomePage() { 
+		System.out.println("In Controller");
 		ModelAndView mv = new ModelAndView("homePage");
 		return mv;
 	}
 	
+	@RequestMapping("/instructorDashboard")
+	public ModelAndView getInstDashboard() {
+		ModelAndView mv = new ModelAndView("instructorDashboard");
+		return mv;
+	}
+	
+	@RequestMapping("/studentDashboard")
+	public ModelAndView getStuDashboard() {
+		ModelAndView mv = new ModelAndView("studentDashboard");
+		return mv;
+	}
+	/*
+	 * Funtion to Signup new User
+	 */
 	@RequestMapping(value = "/userSignUp", method = RequestMethod.POST, produces="application/json")
 	@ResponseBody
 	public ResponseVO userSignUp(@RequestBody UserDetailsVO userDetails){
@@ -34,9 +47,26 @@ public class MainController {
 			responseVO.setErrorStatus(true);
 		} catch (Exception e) {
 			e.printStackTrace();
-			responseVO.setErrorMessage("SignUp Failure");
+			responseVO.setErrorMessage(e.getMessage());
 			responseVO.setErrorStatus(false);
 		}
 		return responseVO;		
+	}
+	
+	/*
+	 * Funtion to Login existing User
+	 */
+	@RequestMapping(value = "/userLogin", method = RequestMethod.POST, produces="application/json")
+	@ResponseBody
+	public UserDetailsVO userLogin(@RequestBody UserDetailsVO userDetails){
+		try {
+			userDetails = dAcc.userLogin(userDetails);
+		} catch (Exception e) {
+			userDetails = new UserDetailsVO();
+			e.printStackTrace();
+			userDetails.setErrorMessage("Login Failure");
+			userDetails.setErrorStatus(false);
+		}
+		return userDetails;		
 	}
 }

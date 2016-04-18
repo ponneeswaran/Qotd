@@ -32,13 +32,13 @@
 		</div>
 		<div class="col-xs-3" style="border-left: 1px solid black;">
 			<div style="padding:40px 50px;">
-	    		<form role="form" >
+	    		<form role="form" action="javascript:hPage.onLogin();">
 					<div class="form-group">
-	        			<label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+	        			<label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label><label class="errMsg" id="usrErrMsg"> </label>
 	        			<input type="text" class="form-control" id="usrname" placeholder="Enter username" name="user">
 	      			</div>
 		      		<div class="form-group">
-		        		<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+		        		<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label><label class="errMsg" id="pswErrMsg"> </label>
 		        		<input type="password" class="form-control" id="psw" placeholder="Enter password" name="pwd">
 		      		</div>
 		      		<div class="checkbox">

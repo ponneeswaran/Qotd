@@ -12,6 +12,8 @@ public class UserDetailsVO {
 	private String password;
 	private String emailId;
 	private int roleId;
+	private String errorMessage;
+	private boolean errorStatus;
 	
 	/**
 	 * @return the userId
@@ -60,5 +62,29 @@ public class UserDetailsVO {
 	 */
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
+	}
+	/**
+	 * @return the errorMessage
+	 */
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+	/**
+	 * @param errorMessage the errorMessage to set
+	 */
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+	/**
+	 * @return the errorStatus
+	 */
+	public boolean isErrorStatus() {
+		return errorStatus;
+	}
+	/**
+	 * @param errorStatus the errorStatus to set
+	 */
+	public void setErrorStatus(boolean errorStatus) {
+		this.errorStatus = errorStatus;
 	}
 }

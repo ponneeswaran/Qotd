@@ -77,10 +77,60 @@ var hPage = {
 			contentType: "application/json",
 			dataType: "json",
 			success: function(data){
-				console.log(data);
+				if(data.errorStatus==false){
+					$("#signUpUsrErrMsg").text(data.errorMessage);
+				}
 			},
 			failure: function(failure){
-				
+				$("#signUpUsrErrMsg").text("Network Error!");
+			}
+		});
+	},
+	onLogin: function(){
+		var usrFlag = true;
+		var pswFlag = true;
+		if(!hPage.validation.textFieldReq("usrname")){
+			$("#usrErrMsg").text("is required");
+			usrFlag = false;
+		}
+		if(!hPage.validation.textFieldReq("psw")){
+			$("#pswErrMsg").text("is required");
+			pswFlag = false;
+		}
+		if(!usrFlag && !pswFlag){
+			return false;
+		}
+		else{
+			$("#usrErrMsg").text("");
+			$("#pswErrMsg").text("");
+		}
+		
+		var emailId = $("#usrname").val();
+		var password = $("#psw").val();
+
+		var userData = {"emailId": emailId,"password": password};
+		
+		$.ajax({
+			type: 'POST',
+			url: hPage.globalVar.context+'/userLogin',
+			data: JSON.stringify(userData),
+			contentType: "application/json",
+			dataType: "json",
+			success: function(data){
+				if(data.errorStatus==false){
+					$("#usrErrMsg").text(data.errorMessage);
+					return false;
+				}else{
+					if(data.roleId==2){
+						$(location).attr('href',hPage.globalVar.context+'/instructorDashboard');
+					}
+					else{
+						$(location).attr('href',hPage.globalVar.context+'/studentDashboard');
+					}
+				}
+			},
+			failure: function(failure){
+				$("#usrErrMsg").text("Network Error!");
 			}
 		});
 	},
