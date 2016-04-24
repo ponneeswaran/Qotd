@@ -25,13 +25,6 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping("/SubmitAnswer")
-	public ModelAndView submitAnswer()
-	{
-		ModelAndView mv = new ModelAndView("homePage");
-		return mv;
-	}
-	
 	@RequestMapping("/instructorDashboard")
 	public ModelAndView getInstDashboard() {
 		ModelAndView mv = new ModelAndView("instructorDashboard");
