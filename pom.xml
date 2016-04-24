@@ -42,10 +42,33 @@
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.6</version>
+		</dependency>
+		<dependency>
+        	<groupId>org.springframework</groupId>
+        	<artifactId>spring-jdbc</artifactId>
+        	<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+      		<groupId>org.codehaus.jackson</groupId>
+      		<artifactId>jackson-mapper-asl</artifactId>
+      		<version>1.9.13</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20090211</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -58,6 +81,12 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+	                <failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 		</plugins>
