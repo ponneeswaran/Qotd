@@ -1,5 +1,6 @@
 package com.awqotd.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,8 @@ import com.awqotd.vo.UserDetailsVO;
 @Controller
 public class MainController {
 	
-	DataAccessor dAcc = new DataAccessor();
+	@Autowired
+	DataAccessor dAcc;
 	
 	@RequestMapping("/homePage")
 	public ModelAndView getHomePage() { 
