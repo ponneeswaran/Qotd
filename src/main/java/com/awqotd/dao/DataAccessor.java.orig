@@ -6,12 +6,16 @@ package com.awqotd.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+<<<<<<< HEAD
+
+=======
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+>>>>>>> 87fcc26ba0cd10dc06a0ff2b7014edef69d6aa11
 import com.awqotd.vo.QueriesVO;
 import com.awqotd.vo.ResponseVO;
 import com.awqotd.vo.UserDetailsVO;
@@ -20,6 +24,46 @@ import com.awqotd.vo.UserDetailsVO;
  * @author Ponneeswaran
  *
  */
+<<<<<<< HEAD
+public class DataAccessor{
+	private Connection dbConnection = DBConnection.getConnection();
+	private PreparedStatement statement;
+	
+	/*
+	 * Funtion to Signup new User
+	 */
+	public void userSignUp(UserDetailsVO userDetails) throws Exception{
+		if(dbConnection==null){
+			throw new Exception("DB Connection Problem");
+		}
+		statement=dbConnection.prepareStatement(QueriesVO.USER_SIGN_UP_CHECK);
+		statement.setString(1, userDetails.getEmailId());
+		ResultSet rs = statement.executeQuery();
+		while(rs.next()){
+			if(rs.getInt("NUM")>=1){
+				throw new Exception("User already Exists!");
+			}
+		}
+		
+		statement=dbConnection.prepareStatement(QueriesVO.USER_SIGN_UP);
+		statement.setString(1, userDetails.getPassword());
+		statement.setString(2, userDetails.getEmailId());
+		statement.executeUpdate();
+	}
+
+	public UserDetailsVO userLogin(UserDetailsVO userDetails) throws Exception {
+		if(dbConnection==null){
+			throw new Exception("DB Connection Problem");
+		}
+		
+		statement=dbConnection.prepareStatement(QueriesVO.USER_LOGIN);
+		statement.setString(1, userDetails.getPassword());
+		statement.setString(2, userDetails.getEmailId());
+		ResultSet rs = statement.executeQuery();
+		
+		if(rs.last()){
+			if(rs.getRow()==1){
+=======
 @Component
 public class DataAccessor
 {
@@ -59,16 +103,26 @@ public class DataAccessor
 		{
 			if(rs.getRow()==1)
 			{
+>>>>>>> 87fcc26ba0cd10dc06a0ff2b7014edef69d6aa11
 				userDetails.setRoleId(rs.getInt("ROLE_ID"));
 				userDetails.setErrorMessage("Login Success");
 				userDetails.setErrorStatus(true);				
 			}
+<<<<<<< HEAD
+			else{
+=======
 			else
 			{
+>>>>>>> 87fcc26ba0cd10dc06a0ff2b7014edef69d6aa11
 				userDetails.setErrorMessage("Username or Password is wrong!");
 				userDetails.setErrorStatus(false);
 			}
 		}
+<<<<<<< HEAD
+		return userDetails;
+	}
+}
+=======
 		conn.close();
 		return userDetails;
 	}
@@ -93,3 +147,4 @@ public class DataAccessor
 		}
 	}
 }
+>>>>>>> 87fcc26ba0cd10dc06a0ff2b7014edef69d6aa11
