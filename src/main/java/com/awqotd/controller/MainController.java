@@ -2,6 +2,7 @@ package com.awqotd.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.awqotd.dao.DataAccessor;
+import com.awqotd.manager.CommonManager;
 import com.awqotd.vo.ResponseVO;
 import com.awqotd.vo.UserDetailsVO;
 
@@ -17,9 +19,14 @@ public class MainController {
 	
 	@Autowired
 	DataAccessor dAcc;
+	@Autowired
+	CommonManager commonManager;
 	
 	@RequestMapping("/homePage")
-	public ModelAndView getHomePage() { 
+	public ModelAndView getHomePage() 
+	{
+		System.out.println("Before Display Check");
+		dAcc.displayCheck();
 		System.out.println("In Controller");
 		ModelAndView mv = new ModelAndView("homePage");
 		return mv;
@@ -70,5 +77,17 @@ public class MainController {
 			userDetails.setErrorStatus(false);
 		}
 		return userDetails;		
+	}
+	@RequestMapping(value = "/mailTest")
+	public void send_mail()
+	{
+		commonManager.sendQuiz();
+	}
+	@RequestMapping(value = "/submitAnswer/{id}/{option}")
+	@ResponseBody
+	public String receive_answer(@PathVariable("id") String id, @PathVariable("option") String option)
+	{
+		System.out.println(id+" "+option);
+		return commonManager.submitResponse(id, option);
 	}
 }
