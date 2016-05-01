@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%
+	response.addHeader("Cache-Control", "no-cache,no-store,private,must-revalidate,max-stale=0,post-check=0,pre-check=0"); 
+	response.addHeader("Pragma", "no-cache"); 
+	response.addDateHeader ("Expires", 0);
+%>
+<% 	String data=(String)session.getAttribute( "user" );
+	if(data==null){
+		response.sendRedirect(request.getContextPath() + "/homePage");
+	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,38 +50,33 @@
           			<span class="icon-bar"></span>
           			<span class="icon-bar"></span>                        
       			</button>
-      			<a class="navbar-brand" href="#">WebSiteName</a>
+      			<a class="navbar-brand" href="#"><%=session.getAttribute("user") %></a>
     		</div>
     		<div>
       			<div class="collapse navbar-collapse" id="myNavbar">
         			<ul class="nav navbar-nav">
-          				<li><a href="#section1">Section 1</a></li>
-          				<li><a href="#section2">Section 2</a></li>
-          				<li><a href="#section3">Section 3</a></li>
-          				<li><a href="#section4">Section 4</a></li>
+          				<li><a href="#dashboard">Dashboard</a></li>
+          				<li><a href="#schedule">Schedule Quiz</a></li>
+          				<li><a href="#perf">Performance</a></li>
+          				<li><a href="#logout">Logout</a></li>
         			</ul>
       			</div>
     		</div>
   		</div>
 	</nav>    
 
-	<div id="section1" class="container-fluid">
+	<div id="dashboard" class="container-fluid">
   		<h1>Section 1</h1>
   		<p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
   		<p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
 	</div>
-	<div id="section2" class="container-fluid">
+	<div id="schedule" class="container-fluid">
   		<h1>Section 2</h1>
   		<p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
   		<p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
 	</div>
-	<div id="section3" class="container-fluid">
+	<div id="perf" class="container-fluid">
   		<h1>Section 3</h1>
-  		<p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  		<p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-	</div>
-	<div id="section4" class="container-fluid">
-  		<h1>Section 4</h1>
   		<p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
   		<p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
 	</div>
