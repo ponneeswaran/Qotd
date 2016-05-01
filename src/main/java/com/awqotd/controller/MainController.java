@@ -1,5 +1,7 @@
 package com.awqotd.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.awqotd.dao.DataAccessor;
 import com.awqotd.manager.CommonManager;
 import com.awqotd.vo.ResponseVO;
 import com.awqotd.vo.UserDetailsVO;
 
 @Controller
-public class MainController {
+public class MainController 
+{
 	
 	@Autowired
 	DataAccessor dAcc;
@@ -24,22 +26,20 @@ public class MainController {
 	
 	@RequestMapping("/homePage")
 	public ModelAndView getHomePage() 
-	{
-		System.out.println("Before Display Check");
-		dAcc.displayCheck();
+	{ 
 		System.out.println("In Controller");
 		ModelAndView mv = new ModelAndView("homePage");
 		return mv;
 	}
-	
 	@RequestMapping("/instructorDashboard")
-	public ModelAndView getInstDashboard() {
+	public ModelAndView getInstDashboard() 
+	{
 		ModelAndView mv = new ModelAndView("instructorDashboard");
 		return mv;
 	}
-	
 	@RequestMapping("/studentDashboard")
-	public ModelAndView getStuDashboard() {
+	public ModelAndView getStuDashboard() 
+	{
 		ModelAndView mv = new ModelAndView("studentDashboard");
 		return mv;
 	}
@@ -67,9 +67,13 @@ public class MainController {
 	 */
 	@RequestMapping(value = "/userLogin", method = RequestMethod.POST, produces="application/json")
 	@ResponseBody
-	public UserDetailsVO userLogin(@RequestBody UserDetailsVO userDetails){
+	public UserDetailsVO userLogin(@RequestBody UserDetailsVO userDetails,HttpServletRequest request,
+            HttpServletResponse response){
 		try {
 			userDetails = dAcc.userLogin(userDetails);
+			if(userDetails.isErrorStatus()){
+				request.getSession().setAttribute("user", userDetails.getEmailId());
+			}
 		} catch (Exception e) {
 			userDetails = new UserDetailsVO();
 			e.printStackTrace();
