@@ -1,5 +1,9 @@
 package com.awqotd.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -60,9 +64,13 @@ public class MainController {
 	 */
 	@RequestMapping(value = "/userLogin", method = RequestMethod.POST, produces="application/json")
 	@ResponseBody
-	public UserDetailsVO userLogin(@RequestBody UserDetailsVO userDetails){
+	public UserDetailsVO userLogin(@RequestBody UserDetailsVO userDetails,HttpServletRequest request,
+            HttpServletResponse response){
 		try {
 			userDetails = dAcc.userLogin(userDetails);
+			if(userDetails.isErrorStatus()){
+				request.getSession().setAttribute("user", userDetails.getEmailId());
+			}
 		} catch (Exception e) {
 			userDetails = new UserDetailsVO();
 			e.printStackTrace();

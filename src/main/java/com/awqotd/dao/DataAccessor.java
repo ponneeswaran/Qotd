@@ -72,24 +72,4 @@ public class DataAccessor
 		conn.close();
 		return userDetails;
 	}
-	
-	public void displayCheck()
-	{
-		Connection conn = null;
-		try 
-		{
-			conn = dataSource.getConnection();
-		}
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		finally
-		{
-			if(conn!=null)
-			{
-				try{conn.close();}catch (SQLException e){e.printStackTrace();}
-			}
-		}
-	}
 }
