@@ -44,7 +44,7 @@ public class Oracle_Searcher
 	{
 		try 
 		{
-			Directory indexDir = FSDirectory.open(Paths.get("/home/anandh/Documents/Adaptive Web/temp/LIndex"));
+			Directory indexDir = FSDirectory.open(Paths.get("C:\\Users\\Ponneeswaran\\Downloads\\LIndex\\LIndex"));
 			indexSearcher = new IndexSearcher(DirectoryReader.open(indexDir));
 			queryParser = new QueryParser("keywords", new StandardAnalyzer(getStopWords()));
 		}

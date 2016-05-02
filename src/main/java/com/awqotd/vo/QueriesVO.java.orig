@@ -1,0 +1,51 @@
+/**
+ * 
+ */
+package com.awqotd.vo;
+
+
+public class QueriesVO {
+	public static final String USER_SIGN_UP = "INSERT INTO user_details(PASSWORD,EMAIL_ID) VALUES(?,?)";
+	public static final String USER_SIGN_UP_CHECK = "SELECT COUNT(*) AS NUM FROM user_details WHERE EMAIL_ID=?";
+	public static final String USER_LOGIN = "SELECT * FROM user_details WHERE PASSWORD=? AND EMAIL_ID=?";
+<<<<<<< HEAD
+	public static final String SCHEDULED_QUIZ = "SELECT QZ.QUIZ_ID, QZ.QUIZ_NAME, COUNT(SUBS.QUIZ_ID) AS SUBSCRIPTIONS "
+												+ "FROM quiz QZ "
+												+ "INNER JOIN user_details USER ON USER.USER_ID = QZ.CREATED_BY AND USER.EMAIL_ID = ? "
+												+ "INNER JOIN user_subscriptions SUBS ON SUBS.QUIZ_ID = QZ.QUIZ_ID "
+												+ "ORDER BY CREATED_DATE DESC";
+	public static final String QUIZ_QUESTIONS = "SELECT QS.QUESTION_ID, QS.QUESTION_TEXT, QS.CREATED_DATE, COUNT(RS.USER_ID) AS SUBMISSIONS "
+												+ "FROM questions QS "
+												+ "INNER JOIN questions_expiry QZ ON QZ.QUESTION_ID = QS.QUESTION_ID AND QZ.QUIZ_ID = ? "
+												+ "INNER JOIN results RS ON RS.QUESTION_ID = QZ.QUESTION_ID AND RS.QUIZ_ID = QZ.QUIZ_ID "
+												+ "GROUP BY QS.QUESTION_TEXT, QS.CREATED_DATE "
+												+ "ORDER BY QS.CREATED_DATE DESC";
+	public static final String JAVA_TOPICS = "SELECT TAG_NAME AS LIST_OBJ FROM dag_tag";
+	public static final String TOPIC_QUESTIONS = "SELECT QUESTION_ID, QUESTION_TEXT FROM questions WHERE TAG LIKE '%";
+	public static final String GET_AUTO_INCREMENT = "SELECT AUTO_INCREMENT AS ID "
+													+ "FROM information_schema.TABLES "
+													+ "WHERE TABLE_SCHEMA = 'qotd' "
+													+ "AND TABLE_NAME = ?";
+	public static final String QUIZ_INSERT = "INSERT INTO quiz VALUES (?,?,(SELECT USER_ID FROM user_details WHERE EMAIL_ID = ? AND ROLE_ID =2),?)";
+	public static final String QUESTIONS_INSERT = "INSERT INTO questions VALUES (?,?,(SELECT USER_ID FROM user_details WHERE EMAIL_ID = ? AND ROLE_ID =2),?,?)";
+	public static final String EXPIRY_INSERT = "INSERT INTO questions_expiry VALUES (?,?,?,?)";
+	public static final String OPTIONS_INSERT = "INSERT INTO options VALUES (?,?,?,?,?)";
+=======
+	public static final String TRIAL_CHECK ="SELECT * FROM user_roles";
+	public static final String GET_UNIQUE_ID = "{call qotd.getMailUniqueId(?,?,?,?)}";
+	public static final String UPDATE_STUDENT_RESPONSE = "{call qotd.updateStudentResponse(?,?,?,?,?,?)}";
+	public static final String GET_MAIL_CONTENT = "select qe.quiz_id as quiz_id, qe.question_id as question_id,"
+			+ " q.question_text as question_text, o.option_id as option_id, o.option_text as option_text,"
+			+ " qu.quiz_name as quiz_name from questions_expiry qe, questions q, options o, quiz qu where"
+			+ " qe.quiz_id = qu.quiz_id and qe.question_id = q.question_id and qe.question_id = o.question_id"
+			+ " and qe.PublishDate = curdate() order by qe.quiz_id, qe.question_id";
+	public static final String GET_USER_LIST = "select u.user_id as user_id, ud.email_id as email_id from user_details ud, user_subscriptions"
+			+ " u where u.user_id = ud.user_id and u.quiz_id = ?";
+	public static final String DAG_TAG_QUERY1 = "select * from dag_tag order by tag_id";
+	public static final String DAG_TAG_QUERY2 = "select * from dag_tag_links";
+	public static final String FETCH_USER_TAG_KNOWLEDGE = "select tag_name, weight, last_adj_wgt from user_knowledge where user_id = ?";
+	public static final String FETCH_Q_TAG_WEIGHTS = "select tags from options where question_id = ? and option_id = ?";
+	public static final String GET_CORRECTNESS = "select weight from options where option_id = ?";
+	public static final String USER_EMAIL = "select email_id from user_details where user_id = ?";
+>>>>>>> a12021226c1c6190369b66518783020bae2f8e5c
+}

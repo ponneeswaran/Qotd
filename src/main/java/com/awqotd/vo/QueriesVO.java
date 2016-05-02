@@ -41,9 +41,9 @@ public class QueriesVO {
 													+ "FROM information_schema.TABLES "
 													+ "WHERE TABLE_SCHEMA = 'qotd' "
 													+ "AND TABLE_NAME = ?";
-	public static final String QUIZ_INSERT = "INSERT INTO quiz VALUES (?,?,(SELECT USER_ID FROM user_details WHERE EMAIL_ID = ? AND ROLE_ID =2),?)";
-	public static final String QUESTIONS_INSERT = "INSERT INTO questions VALUES (?,?,(SELECT USER_ID FROM user_details WHERE EMAIL_ID = ? AND ROLE_ID =2),?,?)";
-	public static final String EXPIRY_INSERT = "INSERT INTO questions_expiry VALUES (?,?,?,?)";
-	public static final String OPTIONS_INSERT = "INSERT INTO options VALUES (?,?,?,?,?)";
+	public static final String QUIZ_INSERT = "INSERT INTO quiz(QUIZ_ID, QUIZ_NAME, CREATED_BY, CREATED_DATE) VALUES(?,?,(SELECT USER_ID FROM user_details WHERE EMAIL_ID = ? AND ROLE_ID =2),?)";
+	public static final String QUESTIONS_INSERT = "INSERT INTO questions(QUESTION_ID, QUESTION_TEXT, CREATED_BY, CREATED_DATE, TAG) VALUES(?,?,(SELECT USER_ID FROM user_details WHERE EMAIL_ID = ? AND ROLE_ID =2),?,?)";
+	public static final String EXPIRY_INSERT = "INSERT INTO questions_expiry(QUIZ_ID, QUESTION_ID, EXPIRYDATE, PUBLISHDATE) VALUES(?,?,?,?)";
+	public static final String OPTIONS_INSERT = "INSERT INTO options(OPTION_ID, QUESTION_ID, OPTION_TEXT, TAGS, WEIGHT) VALUES(?,?,?,?,?)";
 
 }

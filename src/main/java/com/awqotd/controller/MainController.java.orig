@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.awqotd.dao.DataAccessor;
-import com.awqotd.manager.CommonManager;
+<<<<<<< HEAD
 import com.awqotd.vo.Node;
 import com.awqotd.vo.QuizDetailsVO;
+=======
+import com.awqotd.manager.CommonManager;
+>>>>>>> a12021226c1c6190369b66518783020bae2f8e5c
 import com.awqotd.vo.ResponseVO;
 import com.awqotd.vo.ScheduleVO;
 import com.awqotd.vo.UserDetailsVO;
@@ -34,6 +37,7 @@ public class MainController
 		ModelAndView mv = new ModelAndView("homePage");
 		return mv;
 	}
+<<<<<<< HEAD
 	
 	@RequestMapping("/logout")
 	public ModelAndView logout() { 
@@ -41,6 +45,8 @@ public class MainController
 		return mv;
 	}
 	
+=======
+>>>>>>> a12021226c1c6190369b66518783020bae2f8e5c
 	@RequestMapping("/instructorDashboard")
 	public ModelAndView getInstDashboard() 
 	{
@@ -92,19 +98,8 @@ public class MainController
 		}
 		return userDetails;		
 	}
-	@RequestMapping(value = "/mailTest")
-	public void send_mail()
-	{
-		commonManager.sendQuiz();
-	}
-	@RequestMapping(value = "/submitAnswer/{id}/{option}")
-	@ResponseBody
-	public String receive_answer(@PathVariable("id") String id, @PathVariable("option") String option)
-	{
-		System.out.println(id+" "+option);
-		return commonManager.submitResponse(id, option);
-	}
-
+<<<<<<< HEAD
+	
 	/*
 	 * Page: Instructor Dashboard
 	 * Function: Get scheduled quizzes
@@ -192,11 +187,9 @@ public class MainController
 	@RequestMapping(value = "/scheduleQuiz", method = RequestMethod.POST, produces="application/json")
 	@ResponseBody
 	public ResponseVO scheduleQuiz(@RequestBody ScheduleVO scheduleVO){
-		System.out.println("Inside controller!!!!");
 		ResponseVO responseVO = new ResponseVO();
 		try {
 			dAcc.scheduleQuiz(scheduleVO);
-			commonManager.sendQuiz();
 			responseVO.setErrorMessage("Java Topic Fetch Success");
 			responseVO.setErrorStatus(true);
 		} catch (Exception e) {
@@ -205,5 +198,18 @@ public class MainController
 			responseVO.setErrorStatus(false);
 		}
 		return responseVO;		
+=======
+	@RequestMapping(value = "/mailTest")
+	public void send_mail()
+	{
+		commonManager.sendQuiz();
+	}
+	@RequestMapping(value = "/submitAnswer/{id}/{option}")
+	@ResponseBody
+	public String receive_answer(@PathVariable("id") String id, @PathVariable("option") String option)
+	{
+		System.out.println(id+" "+option);
+		return commonManager.submitResponse(id, option);
+>>>>>>> a12021226c1c6190369b66518783020bae2f8e5c
 	}
 }
