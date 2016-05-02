@@ -69,7 +69,7 @@ var hPage = {
 		var password = $("#signUpPsw").val();
 
 		var userData = {"emailId": emailId,"password": password};
-		
+
 		$.ajax({
 			type: 'POST',
 			url: hPage.globalVar.context+'/userSignUp',
