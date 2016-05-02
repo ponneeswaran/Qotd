@@ -6,6 +6,8 @@ public class SubAnsResVO
 	private int quiz_id;
 	private int question_id;
 	private int user_id;
+	private String associated_tags;
+	private double option_correctness;
 	public int getStatus() {
 		return status;
 	}
@@ -29,5 +31,17 @@ public class SubAnsResVO
 	}
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
+	}
+	public String getAssociated_tags() {
+		return associated_tags;
+	}
+	public void setAssociated_tags(String associated_tags) {
+		this.associated_tags = associated_tags;
+	}
+	public double getOption_correctness() {
+		return option_correctness;
+	}
+	public void setOption_correctness(double option_correctness) {
+		this.option_correctness = option_correctness;
 	}
 }

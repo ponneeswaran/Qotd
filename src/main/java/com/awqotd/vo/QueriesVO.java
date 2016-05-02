@@ -18,4 +18,10 @@ public class QueriesVO {
 			+ " and qe.PublishDate = curdate() order by qe.quiz_id, qe.question_id";
 	public static final String GET_USER_LIST = "select u.user_id as user_id, ud.email_id as email_id from user_details ud, user_subscriptions"
 			+ " u where u.user_id = ud.user_id and u.quiz_id = ?";
+	public static final String DAG_TAG_QUERY1 = "select * from dag_tag order by tag_id";
+	public static final String DAG_TAG_QUERY2 = "select * from dag_tag_links";
+	public static final String FETCH_USER_TAG_KNOWLEDGE = "select tag_name, weight, last_adj_wgt from user_knowledge where user_id = ?";
+	public static final String FETCH_Q_TAG_WEIGHTS = "select tags from options where question_id = ? and option_id = ?";
+	public static final String GET_CORRECTNESS = "select weight from options where option_id = ?";
+	public static final String USER_EMAIL = "select email_id from user_details where user_id = ?";
 }

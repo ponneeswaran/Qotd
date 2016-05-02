@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,12 +19,15 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.awqotd.vo.Edge;
+import com.awqotd.vo.Node;
 import com.awqotd.vo.OptionDetailVO;
 import com.awqotd.vo.QueriesVO;
 import com.awqotd.vo.QuestionDetailVO;
 import com.awqotd.vo.QuizDetailVO;
 import com.awqotd.vo.SubAnsResVO;
 import com.awqotd.vo.UserDetailsVO;
+import com.awqotd.vo.UserKnowledgeVO;
 
 /**
  * @author Ponneeswaran
@@ -275,5 +279,202 @@ public class DataAccessor
 				try{conn.close();}catch (SQLException e){e.printStackTrace();}
 			}
 		}
+	}
+	public List<Node> getDAGNodes()
+	{
+		List<Node> result = new ArrayList<Node>();
+		Connection conn = null;
+		PreparedStatement statement=null;
+		try 
+		{
+			conn=dataSource.getConnection();
+			statement=conn.prepareStatement(QueriesVO.DAG_TAG_QUERY1);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next())
+				result.add(new Node(rs.getString("tag_name"), rs.getString("url"), rs.getInt("tag_id")));
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(conn!=null)
+			{
+				try{conn.close();}catch (SQLException e){e.printStackTrace();}
+			}
+		}
+		return result;
+	}
+	public List<Edge> getDAGEdges()
+	{
+		List<Edge> result = new ArrayList<Edge>();
+		Connection conn = null;
+		PreparedStatement statement=null;
+		try 
+		{
+			conn=dataSource.getConnection();
+			statement=conn.prepareStatement(QueriesVO.DAG_TAG_QUERY2);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next())
+				result.add(new Edge(rs.getInt("source_tag_id"), rs.getInt("target_tag_id"), rs.getDouble("weight")));
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(conn!=null)
+			{
+				try{conn.close();}catch (SQLException e){e.printStackTrace();}
+			}
+		}
+		return result;
+	}
+	public Map<String, UserKnowledgeVO> getUserKnowledgeData(int user_id)
+	{
+		Map<String, UserKnowledgeVO> result = new HashMap<String, UserKnowledgeVO>();
+		Connection conn = null;
+		PreparedStatement statement=null;
+		try 
+		{
+			conn=dataSource.getConnection();
+			statement=conn.prepareStatement(QueriesVO.FETCH_USER_TAG_KNOWLEDGE);
+			statement.setInt(1, user_id);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next())
+			{
+				String tag_name = rs.getString("tag_name");
+				result.put(tag_name, new UserKnowledgeVO(tag_name, rs.getDouble("weight"), rs.getDouble("last_adj_wgt")));
+			}
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(conn!=null)
+			{
+				try{conn.close();}catch (SQLException e){e.printStackTrace();}
+			}
+		}
+		return result;
+	}
+	public Map<String, Double> getQTagData(int question_id, int option_id)
+	{
+		Map<String, Double> result = new HashMap<String, Double>();
+		Connection conn = null;
+		PreparedStatement statement=null;
+		try 
+		{
+			conn=dataSource.getConnection();
+			statement=conn.prepareStatement(QueriesVO.FETCH_Q_TAG_WEIGHTS);
+			statement.setInt(1, question_id);
+			statement.setInt(2, option_id);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next())
+			{
+				String temp = rs.getString("tags");
+				String [] tok1 = temp.split(",");
+				for(String first_split: tok1)
+				{
+					String [] tok2 = first_split.split("\\|");
+					result.put(tok2[0], Double.parseDouble(tok2[1]));
+				}
+				break;
+			}
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(conn!=null)
+			{
+				try{conn.close();}catch (SQLException e){e.printStackTrace();}
+			}
+		}
+		return result;
+	}
+	public void executeBatch(String query)
+	{
+		Connection conn = null;
+		Statement statement=null;
+		try 
+		{
+			conn=dataSource.getConnection();
+			statement=conn.createStatement();
+			statement.executeUpdate(query);
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(conn!=null)
+			{
+				try{conn.close();}catch (SQLException e){e.printStackTrace();}
+			}
+		}
+	}
+	public double getCorrectness(int option_id)
+	{
+		Connection conn = null;
+		PreparedStatement statement = null;
+		try 
+		{
+			conn=dataSource.getConnection();
+			statement=conn.prepareStatement(QueriesVO.GET_CORRECTNESS);
+			statement.setInt(1, option_id);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next())
+			{
+				return rs.getInt("weight");
+			}
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(conn!=null)
+			{
+				try{conn.close();}catch (SQLException e){e.printStackTrace();}
+			}
+		}
+		return 0.0;
+	}
+	public String getUserEmail(int user_id)
+	{
+		Connection conn = null;
+		PreparedStatement statement = null;
+		try 
+		{
+			conn=dataSource.getConnection();
+			statement=conn.prepareStatement(QueriesVO.USER_EMAIL);
+			statement.setInt(1, user_id);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next())
+			{
+				return rs.getString("email_id");
+			}
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(conn!=null)
+			{
+				try{conn.close();}catch (SQLException e){e.printStackTrace();}
+			}
+		}
+		return "";
 	}
 }

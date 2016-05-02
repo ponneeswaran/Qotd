@@ -1,7 +1,6 @@
 package com.awqotd.mail;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Properties;
@@ -17,6 +16,7 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.awqotd.dao.DataAccessor;
+import com.awqotd.dao.RecommenderDetailsVO;
 import com.awqotd.vo.OptionDetailVO;
 import com.awqotd.vo.QuizDetailVO;
 import com.awqotd.vo.UserDetailsVO;
@@ -113,6 +113,29 @@ public class MailClass
 			}
 			createAndSendMsg(user_detail.getEmailId(), subject, b1.toString());
 		}
+	}
+	public void sendRecommendation(String user_email, List<RecommenderDetailsVO> recommenderDetailsVOs, double correctness)
+	{
+		String subject = "Recommendations for Quiz on "+getDate();
+		String new_line = "<br>";
+		StringBuilder b = new StringBuilder();
+		b.append(new_line);
+		if(correctness == 0.0)
+			b.append("<b>Your response to the question was incorrect. Please Find Below few recommended links that might help</b>");
+		else if (correctness < 90)
+			b.append("<b>Your response to the question was partially correct. Please Find Below some recommended links for the question</b>");
+		else
+			b.append("<b>Your response to the question was correct. Please Find Below some recommended links for related topics</b>");
+		b.append(new_line).append(new_line);
+		int count = 1;
+		for(RecommenderDetailsVO temp: recommenderDetailsVOs)
+		{
+			b.append(count++).append(") ").append(getUrlTemplate(temp.getUrl(), temp.getUrl())).append(new_line);
+			System.out.println(temp.getUrl());
+		}
+		b.append(new_line);
+		
+		createAndSendMsg(user_email, subject, b.toString());
 	}
 	public static void main(String[] args) 
 	{
