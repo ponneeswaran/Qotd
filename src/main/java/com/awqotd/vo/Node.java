@@ -11,7 +11,12 @@ public class Node {
   private String tagName;
 	private String url;
 	private int id;
-	
+	public Node(String tagName, String url, int id)
+	{
+		this.tagName = tagName;
+		this.url = url;
+		this.id = id;
+	}
 	public String getTagName()
 	{
 		return this.tagName;
