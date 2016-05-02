@@ -32,7 +32,7 @@ public class QueriesVO {
 	public static final String QUIZ_QUESTIONS = "SELECT QS.QUESTION_ID, QS.QUESTION_TEXT, QS.CREATED_DATE, COUNT(RS.USER_ID) AS SUBMISSIONS "
 												+ "FROM questions QS "
 												+ "INNER JOIN questions_expiry QZ ON QZ.QUESTION_ID = QS.QUESTION_ID AND QZ.QUIZ_ID = ? "
-												+ "INNER JOIN results RS ON RS.QUESTION_ID = QZ.QUESTION_ID AND RS.QUIZ_ID = QZ.QUIZ_ID "
+												+ "LEFT JOIN results RS ON RS.QUESTION_ID = QZ.QUESTION_ID AND RS.QUIZ_ID = QZ.QUIZ_ID "
 												+ "GROUP BY QS.QUESTION_TEXT, QS.CREATED_DATE "
 												+ "ORDER BY QS.CREATED_DATE DESC";
 	public static final String JAVA_TOPICS = "SELECT TAG_NAME AS LIST_OBJ FROM dag_tag";

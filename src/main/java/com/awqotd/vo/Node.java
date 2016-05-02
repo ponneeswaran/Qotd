@@ -11,6 +11,9 @@ public class Node {
   private String tagName;
 	private String url;
 	private int id;
+	public Node(){
+		
+	}
 	public Node(String tagName, String url, int id)
 	{
 		this.tagName = tagName;

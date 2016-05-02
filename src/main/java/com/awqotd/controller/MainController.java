@@ -169,7 +169,7 @@ public class MainController
 	 * Page: Instructor Dashboard
 	 * Function: Get Java Topics
 	 */
-	@RequestMapping(value = "/getQuestionsonTopic", method = RequestMethod.POST, produces="application/json")
+	@RequestMapping(value = "/getTopicQuestions", method = RequestMethod.POST, produces="application/json")
 	@ResponseBody
 	public ResponseVO getQuestionsonTopic(@RequestBody Node node){
 		ResponseVO responseVO = new ResponseVO();

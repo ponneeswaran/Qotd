@@ -62,7 +62,7 @@
         			<ul class="nav navbar-nav">
           				<li><a href="#dashboard">Dashboard</a></li>
           				<li><a href="#schedule">Schedule Quiz</a></li>
-          				<li><a href="#perf">Performance</a></li>
+          				<!-- <li><a href="#perf">Performance</a></li> -->
           				<li><a href="<%=request.getContextPath()%>/logout">Logout</a></li>
         			</ul>
       			</div>
@@ -260,10 +260,10 @@
 			</div>
   		</div>
 	</div>
-	<div id="perf" class="container-fluid">
+	<!-- <div id="perf" class="container-fluid">
   		<h1>Section 3</h1>
   		<p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
   		<p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-	</div>
+	</div> -->
 </body>
 </html>

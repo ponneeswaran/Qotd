@@ -186,10 +186,9 @@ var iDash = {
 		},
 		getQuestionsonTopic : function(tag){
 			var userData = {"tagName": tag};
-			console.log("userData:",userData);
 			$.ajax({
 				type: 'POST',
-				url: iDash.globalVar.context+'/getQuestionsonTopic',
+				url: iDash.globalVar.context+'/getTopicQuestions',
 				data: JSON.stringify(userData),
 				contentType: "application/json",
 				dataType: "json",
