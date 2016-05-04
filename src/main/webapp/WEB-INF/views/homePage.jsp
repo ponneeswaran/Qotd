@@ -16,16 +16,20 @@
 	
 	<script src="https://code.jquery.com/jquery-2.2.1.js" integrity="sha256-eNcUzO3jsv0XlJLveFEkbB8bA7/CroNpNVk3XpmnwHc=" crossorigin="anonymous"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+	<script src="//d3js.org/d3.v3.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/javascript/common.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/javascript/homePage.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/javascript/d3chart.js"></script>
 	
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/base.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/homePage.css">
 	
 	<script>
 		$( document ).ready(function() {
 			hPage.init();
 			hPage.globalVar.context="<%=request.getContextPath()%>";
+			temp();
 		});
 	</script>
 </head>
@@ -34,10 +38,11 @@
 		<a href="homePage" class="qotd-logo"><label>Java</label> <label style="color: brown;">a</label><label style="color: blue;">Quiz</label><label style="color: brown;">a</label><label style="color: blue;">Day</label></a>
 		<div class="qotd-right" style="font-style: italic; margin-top: 17px;">The greatest enemy of knowledge is not ignorance, rather illusion of knowledge - <b>Stephen Hawking</b></div>
 	</div>
-	<div class="row">
-		<div class="col-xs-9">
+	<div class="row" style="height:700px;">
+		<div class="col-xs-9" style="border-right: 1px solid black;">
+			<temp></temp>
 		</div>
-		<div class="col-xs-3" style="border-left: 1px solid black;">
+		<div class="col-xs-3">
 			<div style="padding:40px 50px;">
 	    		<form role="form" action="javascript:hPage.onLogin();">
 					<div class="form-group">

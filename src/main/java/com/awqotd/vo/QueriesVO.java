@@ -27,7 +27,7 @@ public class QueriesVO {
 	public static final String SCHEDULED_QUIZ = "SELECT QZ.QUIZ_ID, QZ.QUIZ_NAME, COUNT(SUBS.QUIZ_ID) AS SUBSCRIPTIONS "
 												+ "FROM quiz QZ "
 												+ "INNER JOIN user_details USER ON USER.USER_ID = QZ.CREATED_BY AND USER.EMAIL_ID = ? "
-												+ "INNER JOIN user_subscriptions SUBS ON SUBS.QUIZ_ID = QZ.QUIZ_ID "
+												+ "LEFT JOIN user_subscriptions SUBS ON SUBS.QUIZ_ID = QZ.QUIZ_ID "
 												+ "ORDER BY CREATED_DATE DESC";
 	public static final String QUIZ_QUESTIONS = "SELECT QS.QUESTION_ID, QS.QUESTION_TEXT, QS.CREATED_DATE, COUNT(RS.USER_ID) AS SUBMISSIONS "
 												+ "FROM questions QS "
