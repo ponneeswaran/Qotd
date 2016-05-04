@@ -40,6 +40,7 @@
 	</div>
 	<div class="row" style="height:700px;">
 		<div class="col-xs-9" style="border-right: 1px solid black;">
+			<b>Point to Nodes and use mouse wheel to zoom.</b><br>
 			<temp></temp>
 		</div>
 		<div class="col-xs-3">
