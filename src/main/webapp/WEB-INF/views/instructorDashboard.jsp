@@ -22,7 +22,8 @@
 	<script src="https://code.jquery.com/jquery-2.2.1.js" integrity="sha256-eNcUzO3jsv0XlJLveFEkbB8bA7/CroNpNVk3XpmnwHc=" crossorigin="anonymous"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.js"></script>
-	
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 	
 	<script src="<%=request.getContextPath()%>/resources/javascript/common.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/javascript/instructorDashboard.js"></script>
@@ -30,7 +31,7 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/base.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/instructorDashboard.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/dashboard.css">
 	
 	<script>
 		$( document ).ready(function() {
@@ -55,7 +56,7 @@
           			<span class="icon-bar"></span>
           			<span class="icon-bar"></span>                        
       			</button>
-      			<a class="navbar-brand" href="#"><%=session.getAttribute("user") %></a>
+      			<a class="navbar-brand"><%=session.getAttribute("user") %></a>
     		</div>
     		<div>
       			<div class="collapse navbar-collapse" id="myNavbar">
@@ -110,7 +111,7 @@
 	  		<div class="col-xs-10" style="border-right: 1px solid black;">
 	  			<div class="row">
 	  				<div class="col-xs-2">
-	  					<b>Select Quiz : </b></b><select id="quizListOpt"></select>
+	  					<b>Select Quiz : </b><select id="quizListOpt"></select>
 	  				</div>
 	  				<div class="col-xs-1">
 	  					<b>(or)</b>
@@ -134,7 +135,7 @@
 	  			<div class="row">
 	  				<div class="col-xs-12">
 	  					<div class="list-group" id="questionGroup">
-	  						<li class="list-group-item">Select a topic to populate the question list.</li>
+	  						<b>Select a topic to populate the question list.</b>
 						</div>
 	  				</div>
 	  			</div>
@@ -261,9 +262,21 @@
   		</div>
 	</div>
 	<div id="perf" class="container-fluid">
-  		<h1>Section 3</h1>
-  		<p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  		<p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  		<h2>Performance </h2><label class="errMsg" id="q3ErrMsg"> </label><br/><br/>
+  		<div class="row">
+  			<div class="col-xs-12">
+  				<div class="row">
+					<div class="col-xs-12">
+						<b>Select a Quiz : </b><select id="quizPerfList"></select>
+					</div>
+	  			</div>
+  				<div class="row">
+					<div class="col-xs-12">
+						<div id="quizPerformance"></div>
+					</div>
+	  			</div>
+  			</div>
+  		</div>
 	</div>
 </body>
 </html>

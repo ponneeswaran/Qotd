@@ -212,4 +212,104 @@ public class MainController
 	public String getChartJson(){
 		return "{\"comment\": \"DAG Tag\",\"nodes\": [{\"id\":0, \"name\":\"java\",\"group\":1},{\"id\":1, \"name\":\"object\",\"group\":2},{\"id\":2, \"name\":\"inheritance\",\"group\":2},{\"id\":3, \"name\":\"class\",\"group\":1},{\"id\":4, \"name\":\"statements\",\"group\":5},{\"id\":5, \"name\":\"conditional_blocks\",\"group\":5},{\"id\":6, \"name\":\"loop_blocks\",\"group\":5},{\"id\":7, \"name\":\"boolean_expression\",\"group\":5},{\"id\":8, \"name\":\"variables\",\"group\":5},{\"id\":9, \"name\":\"primitive_types\",\"group\":7},{\"id\":10, \"name\":\"arithmetic_expressions\",\"group\":5},{\"id\":11, \"name\":\"literals\",\"group\":5},{\"id\":12, \"name\":\"methods\",\"group\":2},{\"id\":13, \"name\":\"string\",\"group\":7},{\"id\":14, \"name\":\"arrays\",\"group\":7},{\"id\":15, \"name\":\"interface\",\"group\":2},{\"id\":16, \"name\":\"nested_classes\",\"group\":2},{\"id\":17, \"name\":\"scope\",\"group\":5},{\"id\":18, \"name\":\"generics\",\"group\":7},{\"id\":19, \"name\":\"overloading\",\"group\":2},{\"id\":20, \"name\":\"collections\",\"group\":1},{\"id\":21, \"name\":\"arraylist\",\"group\":6},{\"id\":22, \"name\":\"map\",\"group\":7},{\"id\":23, \"name\":\"throwing_catching_exceptions\",\"group\":3},{\"id\":24, \"name\":\"checked_exception\",\"group\":3},{\"id\":25, \"name\":\"unchecked_exception\",\"group\":3},{\"id\":26, \"name\":\"nested_exception\",\"group\":3},{\"id\":27, \"name\":\"stacktrace\",\"group\":3},{\"id\":28, \"name\":\"threads_and_runnables\",\"group\":4},{\"id\":29, \"name\":\"client_server_programming\",\"group\":4},{\"id\":30, \"name\":\"rmi\",\"group\":4},{\"id\":31, \"name\":\"basic_synchronization\",\"group\":4},{\"id\":32, \"name\":\"reflection\",\"group\":1},{\"id\":33, \"name\":\"dynamic_class_loading\",\"group\":2},{\"id\":34, \"name\":\"dynamic_method_invocation\",\"group\":2},{\"id\":35, \"name\":\"accessing_private_features\",\"group\":2},{\"id\":36, \"name\":\"abstractcollection\",\"group\":6},{\"id\":37, \"name\":\"abstractlist\",\"group\":6},{\"id\":38, \"name\":\"abstractqueue\",\"group\":6},{\"id\":39, \"name\":\"abstractset\",\"group\":6},{\"id\":40, \"name\":\"treeset\",\"group\":6},{\"id\":41, \"name\":\"hashset\",\"group\":6},{\"id\":42, \"name\":\"enumset\",\"group\":6},{\"id\":43, \"name\":\"sortedset\",\"group\":6},{\"id\":44, \"name\":\"linked_hashset\",\"group\":6},{\"id\":45, \"name\":\"vector\",\"group\":6},{\"id\":46, \"name\":\"attributelist\",\"group\":6},{\"id\":47, \"name\":\"role_list\",\"group\":6},{\"id\":48, \"name\":\"role_unresolved_list\",\"group\":6},{\"id\":49, \"name\":\"array_blocking_queue\",\"group\":6},{\"id\":50, \"name\":\"synchronous_queue\",\"group\":6},{\"id\":51, \"name\":\"priority_queue\",\"group\":6},{\"id\":52, \"name\":\"blocking_queue\",\"group\":6},{\"id\":53, \"name\":\"set\",\"group\":6},{\"id\":54, \"name\":\"queue\",\"group\":6},{\"id\":55, \"name\":\"list\",\"group\":6},{\"id\":56, \"name\":\"constructor\",\"group\":2},{\"id\":57, \"name\":\"polymorphism\",\"group\":2},{\"id\":58, \"name\":\"arrays\",\"group\":7},{\"id\":59, \"name\":\"string\",\"group\":7},{\"id\":60, \"name\":\"concurrent_programming\",\"group\":1},{\"id\":61, \"name\":\"datastructures\",\"group\":6},{\"id\":62, \"name\":\"fundamentals\",\"group\":1},{\"id\":63, \"name\":\"exceptions\",\"group\":1}],\"links\": [{\"source\":0, \"target\":3, \"value\": 5},{\"source\":0, \"target\":20, \"value\": 5},{\"source\":0, \"target\":32, \"value\": 5},{\"source\":0, \"target\":60, \"value\": 5},{\"source\":0, \"target\":62, \"value\": 5},{\"source\":0, \"target\":63, \"value\": 5},{\"source\":1, \"target\":32, \"value\": 5},{\"source\":2, \"target\":57, \"value\": 5},{\"source\":3, \"target\":2, \"value\": 5},{\"source\":3, \"target\":15, \"value\": 5},{\"source\":3, \"target\":16, \"value\": 5},{\"source\":3, \"target\":17, \"value\": 5},{\"source\":3, \"target\":32, \"value\": 5},{\"source\":3, \"target\":56, \"value\": 5},{\"source\":3, \"target\":57, \"value\": 5},{\"source\":4, \"target\":5, \"value\": 5},{\"source\":4, \"target\":6, \"value\": 5},{\"source\":4, \"target\":12, \"value\": 5},{\"source\":8, \"target\":7, \"value\": 5},{\"source\":8, \"target\":10, \"value\": 5},{\"source\":8, \"target\":11, \"value\": 5},{\"source\":8, \"target\":17, \"value\": 5},{\"source\":11, \"target\":1, \"value\": 5},{\"source\":11, \"target\":7, \"value\": 5},{\"source\":11, \"target\":10, \"value\": 5},{\"source\":12, \"target\":1, \"value\": 5},{\"source\":12, \"target\":16, \"value\": 5},{\"source\":12, \"target\":17, \"value\": 5},{\"source\":12, \"target\":32, \"value\": 5},{\"source\":12, \"target\":57, \"value\": 5},{\"source\":20, \"target\":36, \"value\": 5},{\"source\":21, \"target\":46, \"value\": 5},{\"source\":21, \"target\":47, \"value\": 5},{\"source\":21, \"target\":48, \"value\": 5},{\"source\":23, \"target\":24, \"value\": 5},{\"source\":23, \"target\":25, \"value\": 5},{\"source\":23, \"target\":26, \"value\": 5},{\"source\":23, \"target\":27, \"value\": 5},{\"source\":27, \"target\":26, \"value\": 5},{\"source\":28, \"target\":29, \"value\": 5},{\"source\":28, \"target\":31, \"value\": 5},{\"source\":29, \"target\":30, \"value\": 5},{\"source\":31, \"target\":29, \"value\": 5},{\"source\":31, \"target\":30, \"value\": 5},{\"source\":32, \"target\":33, \"value\": 5},{\"source\":32, \"target\":34, \"value\": 5},{\"source\":33, \"target\":35, \"value\": 5},{\"source\":34, \"target\":35, \"value\": 5},{\"source\":36, \"target\":37, \"value\": 5},{\"source\":36, \"target\":38, \"value\": 5},{\"source\":36, \"target\":39, \"value\": 5},{\"source\":37, \"target\":21, \"value\": 5},{\"source\":37, \"target\":45, \"value\": 5},{\"source\":38, \"target\":49, \"value\": 5},{\"source\":38, \"target\":50, \"value\": 5},{\"source\":38, \"target\":51, \"value\": 5},{\"source\":39, \"target\":40, \"value\": 5},{\"source\":39, \"target\":41, \"value\": 5},{\"source\":39, \"target\":42, \"value\": 5},{\"source\":40, \"target\":43, \"value\": 5},{\"source\":41, \"target\":44, \"value\": 5},{\"source\":53, \"target\":39, \"value\": 5},{\"source\":54, \"target\":38, \"value\": 5},{\"source\":54, \"target\":52, \"value\": 5},{\"source\":55, \"target\":37, \"value\": 5},{\"source\":57, \"target\":19, \"value\": 5},{\"source\":60, \"target\":28, \"value\": 5},{\"source\":61, \"target\":53, \"value\": 5},{\"source\":61, \"target\":54, \"value\": 5},{\"source\":61, \"target\":55, \"value\": 5},{\"source\":62, \"target\":4, \"value\": 5},{\"source\":62, \"target\":8, \"value\": 5},{\"source\":62, \"target\":61, \"value\": 5},{\"source\":63, \"target\":23, \"value\": 5},{\"source\":63, \"target\":24, \"value\": 5},{\"source\":63, \"target\":25, \"value\": 5},{\"source\":63, \"target\":26, \"value\": 5},{\"source\":63, \"target\":27, \"value\": 5}]}";		
 	}
+	
+	/*
+	 * Page: Instructor Dashboard
+	 * Function: Get quiz questions
+	 */
+	@RequestMapping(value = "/getQuizPerf", method = RequestMethod.POST, produces="application/json")
+	@ResponseBody
+	public ResponseVO getQuizPerf(@RequestBody QuizDetailsVO qDetailsVO){
+		ResponseVO responseVO = new ResponseVO();
+		try {
+			responseVO.setQuizPerfVO(dAcc.getQuizPerf(qDetailsVO));
+			responseVO.setErrorMessage("Question Fetch Success");
+			responseVO.setErrorStatus(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseVO.setErrorMessage(e.getMessage());
+			responseVO.setErrorStatus(false);
+		}
+		return responseVO;		
+	}
+	
+	/*
+	 * Page: Instructor Dashboard
+	 * Function: Get scheduled quizzes
+	 */
+	@RequestMapping(value = "/getSubscriptions", method = RequestMethod.POST, produces="application/json")
+	@ResponseBody
+	public ResponseVO getSubscriptions(@RequestBody UserDetailsVO userDetails){
+		ResponseVO responseVO = new ResponseVO();
+		try {
+			responseVO.setqDetails(dAcc.getSubscriptions(userDetails));
+			responseVO.setErrorMessage("Quiz Fetch Success");
+			responseVO.setErrorStatus(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseVO.setErrorMessage(e.getMessage());
+			responseVO.setErrorStatus(false);
+		}
+		return responseVO;		
+	}
+	
+	/*
+	 * Page: Instructor Dashboard
+	 * Function: Get quiz questions
+	 */
+	@RequestMapping(value = "/getQuestionsStud", method = RequestMethod.POST, produces="application/json")
+	@ResponseBody
+	public ResponseVO getQuestionsStud(@RequestBody QuizDetailsVO qDetailsVO){
+		ResponseVO responseVO = new ResponseVO();
+		try {
+			responseVO.setQuesDetails(dAcc.getQuestionsStud(qDetailsVO));
+			responseVO.setErrorMessage("Question Fetch Success");
+			responseVO.setErrorStatus(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseVO.setErrorMessage(e.getMessage());
+			responseVO.setErrorStatus(false);
+		}
+		return responseVO;		
+	}
+	
+	/*
+	 * Page: Instructor Dashboard
+	 * Function: Get scheduled quizzes
+	 */
+	@RequestMapping(value = "/getNonSubscriptions", method = RequestMethod.POST, produces="application/json")
+	@ResponseBody
+	public ResponseVO getNonSubscriptions(@RequestBody UserDetailsVO userDetails){
+		ResponseVO responseVO = new ResponseVO();
+		try {
+			responseVO.setqDetails(dAcc.getNonSubscriptions(userDetails));
+			responseVO.setErrorMessage("Quiz Fetch Success");
+			responseVO.setErrorStatus(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseVO.setErrorMessage(e.getMessage());
+			responseVO.setErrorStatus(false);
+		}
+		return responseVO;		
+	}
+	
+	/*
+	 * Page: Instructor Dashboard
+	 * Function: Get quiz questions
+	 */
+	@RequestMapping(value = "/quizSubscribe", method = RequestMethod.POST, produces="application/json")
+	@ResponseBody
+	public ResponseVO quizSubscribe(@RequestBody QuizDetailsVO qDetailsVO){
+		ResponseVO responseVO = new ResponseVO();
+		try {
+			dAcc.quizSubscribe(qDetailsVO);
+			responseVO.setErrorMessage("Subscription Success");
+			responseVO.setErrorStatus(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseVO.setErrorMessage(e.getMessage());
+			responseVO.setErrorStatus(false);
+		}
+		return responseVO;		
+	}
 }

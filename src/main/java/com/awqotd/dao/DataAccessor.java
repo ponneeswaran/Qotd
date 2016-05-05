@@ -28,6 +28,7 @@ import com.awqotd.vo.QuestionDetailVO;
 import com.awqotd.vo.QuestionDetailsVO;
 import com.awqotd.vo.QuizDetailVO;
 import com.awqotd.vo.QuizDetailsVO;
+import com.awqotd.vo.QuizPerfVO;
 import com.awqotd.vo.ScheduleVO;
 import com.awqotd.vo.SubAnsResVO;
 import com.awqotd.vo.UserDetailsVO;
@@ -609,6 +610,95 @@ public class DataAccessor
 			statement7.executeUpdate();
 		}
 		System.out.println("options insert");
+		conn.close();
+	}
+
+	public List<QuizPerfVO> getQuizPerf(QuizDetailsVO qDetailsVO) throws Exception {
+		List<QuizPerfVO> quizPerfVO = new ArrayList<QuizPerfVO>();
+		Connection conn = dataSource.getConnection();
+		PreparedStatement statement=conn.prepareStatement(QueriesVO.GET_QUIZ_PERF);
+		statement.setString(1, Integer.toString(qDetailsVO.getQuiz_id()));
+		ResultSet rs = statement.executeQuery();
+		while(rs.next())
+		{
+			QuizPerfVO qVO = new QuizPerfVO();
+			qVO.setQuestion_id(rs.getInt("QUESTION_ID"));
+			qVO.setTotal(rs.getInt("TOTAL"));
+			qVO.setStudent(rs.getInt("STUDENTS"));
+			quizPerfVO.add(qVO);
+		}
+		conn.close();
+		
+		return quizPerfVO;
+	}
+
+	public List<QuizDetailsVO> getSubscriptions(UserDetailsVO userDetails) throws Exception {
+		List<QuizDetailsVO> qDetailsVO = new ArrayList<QuizDetailsVO>();
+		Connection conn = dataSource.getConnection();
+		PreparedStatement statement=conn.prepareStatement(QueriesVO.GET_SUBSCRIPTIONS);
+		statement.setString(1, userDetails.getEmailId());
+		ResultSet rs = statement.executeQuery();
+		while(rs.next())
+		{
+			QuizDetailsVO qVO = new QuizDetailsVO();
+			qVO.setQuiz_id(rs.getInt("QUIZ_ID"));
+			qVO.setQuiz(rs.getString("QUIZ_NAME"));
+			qVO.setQuestions(rs.getInt("QUESTIONS"));
+			qDetailsVO.add(qVO);
+		}
+		conn.close();
+		return qDetailsVO;
+	}
+	
+	public List<QuizDetailsVO> getNonSubscriptions(UserDetailsVO userDetails) throws Exception {
+		List<QuizDetailsVO> qDetailsVO = new ArrayList<QuizDetailsVO>();
+		Connection conn = dataSource.getConnection();
+		PreparedStatement statement=conn.prepareStatement(QueriesVO.GET_NON_SUBSCRIPTIONS);
+		statement.setString(1, userDetails.getEmailId());
+		ResultSet rs = statement.executeQuery();
+		while(rs.next())
+		{
+			QuizDetailsVO qVO = new QuizDetailsVO();
+			qVO.setQuiz_id(rs.getInt("quiz_id"));
+			qVO.setQuiz(rs.getString("quiz_name"));
+			qVO.setEmailId(rs.getString("email_id"));
+			qVO.setSubscriptions(rs.getInt("SUBSCRIPTIONS"));
+			if(qVO.getQuiz()!=null){
+				qDetailsVO.add(qVO);
+			}
+		}
+		conn.close();
+		return qDetailsVO;
+	}
+
+	public List<QuestionDetailsVO> getQuestionsStud(QuizDetailsVO qDetailsVO) throws Exception {
+		List<QuestionDetailsVO> quesDetailsVO = new ArrayList<QuestionDetailsVO>();
+		Connection conn = dataSource.getConnection();
+		PreparedStatement statement=conn.prepareStatement(QueriesVO.STUDENT_QUESTIONS);
+		statement.setString(1, qDetailsVO.getEmailId());
+		statement.setString(2, Integer.toString(qDetailsVO.getQuiz_id()));
+		ResultSet rs = statement.executeQuery();
+		while(rs.next())
+		{
+			QuestionDetailsVO qVO = new QuestionDetailsVO();
+			qVO.setQuestion_id(rs.getInt("QUESTION_ID"));
+			qVO.setQuestion_text(rs.getString("QUESTION_TEXT"));
+			qVO.setCreated_date(rs.getString("PUBLISHDATE"));
+			qVO.setIsAnswered(rs.getInt("ANSWERED"));
+			qVO.setSubmissions(rs.getString("CORRECTNESS"));
+			quesDetailsVO.add(qVO);
+		}
+		conn.close();
+		
+		return quesDetailsVO;
+	}
+
+	public void quizSubscribe(QuizDetailsVO qDetailsVO) throws Exception {
+		Connection conn = dataSource.getConnection();
+		PreparedStatement statement=conn.prepareStatement(QueriesVO.QUIZ_SUBSCRIPTION);
+		statement.setString(1, qDetailsVO.getEmailId());
+		statement.setInt(2, qDetailsVO.getQuiz_id());
+		statement.executeUpdate();
 		conn.close();
 	}
 }

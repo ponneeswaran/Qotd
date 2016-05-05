@@ -1,5 +1,5 @@
 function temp(){
-	var width = 1400,
+	var width = 1300,
 	    height = 800;
 	
 	var xScale = d3.scale.linear()

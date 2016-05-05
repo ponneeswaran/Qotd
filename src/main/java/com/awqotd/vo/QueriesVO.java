@@ -45,5 +45,42 @@ public class QueriesVO {
 	public static final String QUESTIONS_INSERT = "INSERT INTO questions(QUESTION_ID, QUESTION_TEXT, CREATED_BY, CREATED_DATE, TAG) VALUES(?,?,(SELECT USER_ID FROM user_details WHERE EMAIL_ID = ? AND ROLE_ID =2),?,?)";
 	public static final String EXPIRY_INSERT = "INSERT INTO questions_expiry(QUIZ_ID, QUESTION_ID, EXPIRYDATE, PUBLISHDATE) VALUES(?,?,?,?)";
 	public static final String OPTIONS_INSERT = "INSERT INTO options(OPTION_ID, QUESTION_ID, OPTION_TEXT, TAGS, WEIGHT) VALUES(?,?,?,?,?)";
-
+	public static final String GET_QUIZ_PERF = "SELECT RS.QUESTION_ID, OPT.OPTION_ID, SUM(OPT.WEIGHT) AS TOTAL, COUNT(RS.QUESTION_ID) AS STUDENTS "
+												+ "FROM options OPT "
+												+ "RIGHT JOIN results RS ON OPT.OPTION_ID = RS.OPTION_ID AND OPT.QUESTION_ID = RS.QUESTION_ID "
+												+ "WHERE RS.QUIZ_ID = ? "
+												+ "GROUP BY RS.QUESTION_ID "
+												+ "ORDER BY RS.QUESTION_ID";
+	public static final String GET_SUBSCRIPTIONS = "SELECT SUBS.QUIZ_ID, QZ.QUIZ_NAME, COUNT(RES.QUESTION_ID) AS QUESTIONS "
+												+ "FROM user_details UDET "
+												+ "INNER JOIN user_subscriptions SUBS ON UDET.USER_ID = SUBS.USER_ID AND UDET.EMAIL_ID = ? "
+												+ "LEFT JOIN results RES ON SUBS.USER_ID = RES.USER_ID AND SUBS.QUIZ_ID = RES.QUIZ_ID "
+												+ "INNER JOIN quiz QZ ON SUBS.QUIZ_ID = QZ.QUIZ_ID "
+												+ "GROUP BY SUBS.QUIZ_ID, QZ.QUIZ_NAME "
+												+ "ORDER BY SUBS.QUIZ_ID";
+	public static final String STUDENT_QUESTIONS = "SELECT QZ.QUESTION_ID, QS.QUESTION_TEXT, QZ.PUBLISHDATE, CASE WHEN ( "
+												+ "SELECT OPTION_ID FROM results "
+												+ "WHERE SUBS.USER_ID = USER_ID AND SUBS.QUIZ_ID = QUIZ_ID AND QZ.QUESTION_ID = QUESTION_ID) THEN 1 ELSE 0 END AS ANSWERED, CASE WHEN ( "
+												+ "SELECT OPTION_ID FROM results "
+												+ "WHERE SUBS.USER_ID = USER_ID AND SUBS.QUIZ_ID = QUIZ_ID AND QZ.QUESTION_ID = QUESTION_ID) THEN ( "
+												+ "SELECT WEIGHT FROM options "
+												+ "WHERE OPTION_ID = ( "
+												+ "SELECT OPTION_ID FROM results "
+												+ "WHERE SUBS.USER_ID = USER_ID AND SUBS.QUIZ_ID = QUIZ_ID AND QZ.QUESTION_ID = QUESTION_ID)) ELSE 0 END AS CORRECTNESS "
+												+ "FROM user_details UDET "
+												+ "INNER JOIN user_subscriptions SUBS ON UDET.USER_ID = SUBS.USER_ID AND UDET.EMAIL_ID = ? " 
+												+ "INNER JOIN questions_expiry QZ ON QZ.QUIZ_ID = SUBS.QUIZ_ID AND QZ.QUIZ_ID = ? "
+												+ "INNER JOIN questions QS ON QZ.QUESTION_ID = QS.QUESTION_ID";
+	public static final String GET_NON_SUBSCRIPTIONS = "SELECT qz.quiz_id, qz.quiz_name, UDET.email_id, COUNT(SUBS.QUIZ_ID) AS SUBSCRIPTIONS "
+														+ "FROM quiz qz "
+														+ "LEFT JOIN user_subscriptions SUBS ON SUBS.QUIZ_ID = qz.QUIZ_ID "
+														+ "JOIN user_details UDET ON qz.created_by = UDET.user_id "
+														+ "WHERE qz.quiz_id NOT IN " 
+														+ "(SELECT quiz_id "
+														+ "FROM user_subscriptions "
+														+ "WHERE user_id = ( "
+														+ "SELECT user_id "
+														+ "FROM user_details "
+														+ "WHERE email_id = ?))";
+	public static final String QUIZ_SUBSCRIPTION = "INSERT INTO user_subscriptions(USER_ID,QUIZ_ID) VALUES((SELECT USER_ID FROM user_details WHERE EMAIL_ID = ?),?)";
 }

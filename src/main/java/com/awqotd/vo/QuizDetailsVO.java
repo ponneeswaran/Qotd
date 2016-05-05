@@ -12,6 +12,8 @@ public class QuizDetailsVO {
 	private String quiz;
 	private String created_date;
 	private int subscriptions;
+	private int questions;
+	private String emailId;
 	private String errorMessage;
 	private boolean errorStatus;
 	/**
@@ -61,6 +63,30 @@ public class QuizDetailsVO {
 	 */
 	public void setSubscriptions(int subscriptions) {
 		this.subscriptions = subscriptions;
+	}
+	/**
+	 * @return the questions
+	 */
+	public int getQuestions() {
+		return questions;
+	}
+	/**
+	 * @param questions the questions to set
+	 */
+	public void setQuestions(int questions) {
+		this.questions = questions;
+	}
+	/**
+	 * @return the emailId
+	 */
+	public String getEmailId() {
+		return emailId;
+	}
+	/**
+	 * @param emailId the emailId to set
+	 */
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 	/**
 	 * @return the errorMessage

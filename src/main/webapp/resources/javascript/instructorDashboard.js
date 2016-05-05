@@ -66,6 +66,12 @@ var iDash = {
 					iDash.globalVar.optionCount--;
 				}
 			});
+			
+			$("#quizPerfList").on('change',function(){
+				if(this.value != "0"){
+					iDash.getQuizPerf(this.value);
+				}
+			});
 		},
 		scheduledQuizzes : function(){
 			var userData = {"emailId": iDash.globalVar.user};
@@ -96,6 +102,11 @@ var iDash = {
 					$("#quizListOpt").append('<option value="0">- SELECT -</option>');
     	        	$.each(data.qDetails ,function(index, value){
     	        		$("#quizListOpt").append('<option value="'+value.quiz_id+'">'+qotd.toPascalCase(value.quiz)+'</option>');
+    	        	});
+    	        	
+    	        	$("#quizPerfList").append('<option value="0">- SELECT -</option>');
+    	        	$.each(data.qDetails ,function(index, value){
+    	        		$("#quizPerfList").append('<option value="'+value.quiz_id+'">'+qotd.toPascalCase(value.quiz)+'</option>');
     	        	});
 				},
 				failure: function(failure){
@@ -300,5 +311,90 @@ var iDash = {
 					return true;
 				}
 			}
+		},
+		getQuizPerf : function(quizId){
+			var userData = {"quiz_id": quizId};
+			var students = [];
+			var catgr = [];
+			var avg = [];
+			
+			$.ajax({
+				type: 'POST',
+				url: iDash.globalVar.context+'/getQuizPerf',
+				data: JSON.stringify(userData),
+				contentType: "application/json",
+				dataType: "json",
+				success: function(data){
+					if(data.errorStatus==false){
+						$("#q3ErrMsg").text(data.errorMessage);
+						return;
+					}
+					
+					$.each(data.quizPerfVO, function(index, value){
+						catgr.push('Question_id:'+value.question_id);
+						students.push(value.student);
+						avg.push(parseFloat((value.total/value.student).toFixed(2)));
+					});
+					console.log(catgr);
+					console.log(students);
+					console.log(avg);
+					var chartData = {"quizId":quizId,"catgr":catgr,"students":students,"avg":avg};
+					iDash.quizPerfChart1(chartData);
+				},
+				failure: function(failure){
+					$("#q3ErrMsg").text("Network Error!");
+				}
+			});
+		},
+		quizPerfChart1 : function(chartData){
+			$('#quizPerformance').highcharts({
+		        chart: {
+		            type: 'column'
+		        },
+		        title: {
+		            text: 'Quiz '+ chartData.quizId +' Performance'
+		        },
+		        xAxis: {
+		            categories: chartData.catgr
+		        },
+		        yAxis: [{
+		            min: 0,
+		            title: {
+		                text: 'Number Of Students'
+		            }
+		        }, {
+		            title: {
+		                text: 'Average Marks'
+		            },
+		            opposite: true
+		        }],
+		        legend: {
+		            shadow: false
+		        },
+		        tooltip: {
+		            shared: true
+		        },
+		        plotOptions: {
+		            column: {
+		                grouping: false,
+		                shadow: false,
+		                borderWidth: 0
+		            }
+		        },
+		        series: [{
+		            name: 'Students',
+		            color: 'rgba(165,170,217,1)',
+		            data: chartData.students,
+		            pointPadding: 0.3,
+		            pointPlacement: -0.2
+		        },  {
+		            name: 'Average',
+		            color: 'rgba(248,161,63,1)',
+		            data: chartData.avg,
+		            pointPadding: 0.3,
+		            pointPlacement: 0.2,
+		            yAxis: 1
+		        }]
+		    });
 		}
 };

@@ -12,6 +12,7 @@ public class QuestionDetailsVO {
 	private String question_text;
 	private String created_date;
 	private String submissions;
+	private int isAnswered;
 	private String errorMessage;
 	private boolean errorStatus;
 	/**
@@ -61,6 +62,18 @@ public class QuestionDetailsVO {
 	 */
 	public void setSubmissions(String submissions) {
 		this.submissions = submissions;
+	}
+	/**
+	 * @return the isAnswered
+	 */
+	public int getIsAnswered() {
+		return isAnswered;
+	}
+	/**
+	 * @param isAnswered the isAnswered to set
+	 */
+	public void setIsAnswered(int isAnswered) {
+		this.isAnswered = isAnswered;
 	}
 	/**
 	 * @return the errorMessage

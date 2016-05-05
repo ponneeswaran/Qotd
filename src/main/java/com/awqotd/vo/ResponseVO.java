@@ -12,6 +12,7 @@ import java.util.List;
 public class ResponseVO {
 	private List<QuizDetailsVO> qDetails;
 	private List<QuestionDetailsVO> quesDetails;
+	private List<QuizPerfVO> quizPerfVO;
 	private List<String> list_obj;
 	private String errorMessage;
 	private boolean errorStatus;
@@ -42,6 +43,20 @@ public class ResponseVO {
 	 */
 	public void setQuesDetails(List<QuestionDetailsVO> quesDetails) {
 		this.quesDetails = quesDetails;
+	}
+
+	/**
+	 * @return the quizPerfVO
+	 */
+	public List<QuizPerfVO> getQuizPerfVO() {
+		return quizPerfVO;
+	}
+
+	/**
+	 * @param quizPerfVO the quizPerfVO to set
+	 */
+	public void setQuizPerfVO(List<QuizPerfVO> quizPerfVO) {
+		this.quizPerfVO = quizPerfVO;
 	}
 
 	/**
