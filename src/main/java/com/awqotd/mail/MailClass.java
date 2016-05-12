@@ -29,7 +29,8 @@ public class MailClass
 	private Properties properties;
 	private Session session;
 	private static final String FROM_ADDRESS = "aqotdmailer@gmail.com";
-	private static final String URL_PREFIX = "http://localhost:8080/QOTD-0.0.1-SNAPSHOT/submitAnswer/";
+	private static final String URL_PREFIX = "http://aw-aquizaday.rhcloud.com:8080/QOTD-1.0/submitAnswer/";
+	//private static final String URL_PREFIX = "http://localhost:8081/QOTD/submitAnswer/";
 	Authenticator auth;
 	public MailClass()
 	{
