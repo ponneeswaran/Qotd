@@ -1,5 +1,5 @@
 # Qotd
-AW Final Project
+CSE 591 Adaptive Web Final Project
 Client ID:321152491452-m5uv0imoma9m07i4pub2la7ufg1bvd1d.apps.googleusercontent.com
 Client Secret:axnWdPtF0Q6xQSEg_RMIDq--
 
@@ -17,10 +17,10 @@ https://www.researchgate.net/publication/228569733
 
 Adaptive Functionalities
 With our regular short brainstorming sessions we came up with the following modules that will be adaptive -  
-User Modelling: Using both implicit and explicit profiling techniques to form an User Model that lets us have a detailed understanding of the user’s expertise in the subject.  
-Adaptive Quiz: Adaptively select quiz from the knowledge base based on the user’s answering patterns and knowledge in the topic.
+User Modelling: Using both implicit and explicit profiling techniques to form an User Model that lets us have a detailed understanding of the userâ€™s expertise in the subject.  
+Adaptive Quiz: Adaptively select quiz from the knowledge base based on the userâ€™s answering patterns and knowledge in the topic.
 Adaptive Feedback: Personalize the type and content of the feedback based on identified areas of strength and weakness of the student.
-Adaptive Support: Based on the student’s answers, identify subject areas that has scope for improvement and suggest learning materials and methods.
+Adaptive Support: Based on the studentâ€™s answers, identify subject areas that has scope for improvement and suggest learning materials and methods.
 
 Other Modules:
 We have identified a few more functionalities that are required for the working of the project and  to support the adaptive modules. They are -
